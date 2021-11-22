@@ -17,4 +17,7 @@ return [
     'handle' => 'Thao tác',
     'headCreate' => 'Tạo bài viết',
     'headEdit' => 'Sửa bài viết',
+    'empty' => 'Chưa có nội dung nào',
+    'vi' => 'Việt Nam',
+    'en' => 'English',
 ];

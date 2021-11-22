@@ -18,22 +18,28 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($articles as $article)
+                @if ($articles->isNotEmpty())
+                    @foreach ($articles as $article)
+                        <tr>
+                            <td>{{ $article->title }}</td>
+                            <td>{{ $article->content }}</td>
+                            <td>{{ $article->category->name }}</td>
+                            <td class="row">
+                                <a class="btn btn-primary mr-2"
+                                    href="{{ route('articles.edit', ['article' => $article]) }}">{{ __('common.edit') }}</a>
+                                <form action="{{ route('articles.destroy', ['article' => $article]) }}" method="post">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button class="btn btn-primary" type="submit">{{ __('common.delete') }}</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                @else
                     <tr>
-                        <td>{{ $article->title }}</td>
-                        <td>{{ $article->content }}</td>
-                        <td>{{ $article->category->name }}</td>
-                        <td class="row">
-                            <a class="btn btn-primary mr-2"
-                                href="{{ route('articles.edit', ['article' => $article]) }}">{{ __('common.edit') }}</a>
-                            <form action="{{ route('articles.destroy', ['article' => $article]) }}" method="post">
-                                @method('DELETE')
-                                @csrf
-                                <button class="btn btn-primary" type="submit">{{ __('common.delete') }}</button>
-                            </form>
-                        </td>
+                        <td class="text-center" colspan="4">{{ __('common.empty') }}</td>
                     </tr>
-                @endforeach
+                @endif
             </tbody>
         </table>
         <div class="d-flex justify-content-center">

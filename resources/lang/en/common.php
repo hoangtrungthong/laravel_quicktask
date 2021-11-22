@@ -16,4 +16,7 @@ return [
     'handle' => 'Handle',
     'headCreate' => 'Create',
     'headEdit' => 'Edit',
+    'empty' => 'Empty content',
+    'vi' => 'Việt Nam',
+    'en' => 'English',
 ];
